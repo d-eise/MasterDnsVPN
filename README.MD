@@ -8,6 +8,7 @@
 > - The ARQ (Automatic Repeat reQuest) layer is what gives MasterDnsVPN its stability advantage over DNSTT under packet loss conditions.
 > - The ~5–7B header overhead is achieved by using a compact binary framing format instead of text-based or verbose headers.
 > - The multi-resolver duplication strategy is essentially a form of forward error correction at the routing layer — interesting parallel to how RAID-1 works at the storage layer.
+> - **Note to self:** The speed comparisons in the table below (e.g. "~9× faster than DNSTT") are measured under specific lab conditions. Real-world numbers will vary significantly depending on resolver latency, ISP filtering aggressiveness, and TTL caching behavior. Worth benchmarking in my own test environment before drawing conclusions.
 
 **MasterDnsVPN** is a scientific and research-oriented project for carrying TCP traffic through DNS queries and responses. In broad goal, it is similar to projects such as DNSTT or SlipStream, but it follows a fundamentally different structure and implementation approach.
 This system is designed around compatibility with many resolver behaviors and harsh network conditions, with the goal of preserving the highest possible stability and data delivery even in the worst cases.
@@ -30,5 +31,4 @@ This system is designed around compatibility with many resolver behaviors and ha
 | Shadowsocks support | ✅ | ❌ | Indirectly: TCP Forwarding mode can carry TCP-based protocols<br>e.g. Shadowsocks, VLESS/VMess, etc. |
 | Real multipath | Yes (QUIC multipath) | ❌ | Yes (multi-resolver + duplication) |
 | Adaptive routing | Limited | ❌ | Advanced (latency/loss based) |
-| Design goal | High speed and efficiency | Simplicity and stability | Surviving the harshest networks — stability, speed, and efficiency |
-| Implementation language | Rust | Go | Main version is Go<br>Legacy Python version also exist
+| Design goal | High speed and efficiency | Simplicity
