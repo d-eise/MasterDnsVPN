@@ -34,6 +34,7 @@ DATA_ENCRYPTION_METHOD = 5
 # Shared encryption key.
 # Required on the client.
 # Must match the server-side key file contents.
+# Personal note: generate a strong key with: openssl rand -hex 32
 ENCRYPTION_KEY = ""
 
 # ------------------------------------------------------------------------------
@@ -56,7 +57,9 @@ PROTOCOL_TYPE = "SOCKS5"
 # If you want other devices on your network to use this proxy, use "0.0.0.0"
 # and enable SOCKS5_AUTH.
 LISTEN_IP = "127.0.0.1"
-LISTEN_PORT = 18000
+# Personal note: changed from 18000 to 10800 to avoid conflict with another
+# service I run locally that uses 18000.
+LISTEN_PORT = 10800
 
 # Local SOCKS5 authentication.
 # This protects the local proxy itself, not the remote server.
@@ -73,11 +76,4 @@ SOCKS5_PASS = "master_dns_vpn"
 
 # When true, the client exposes a local DNS server on LOCAL_DNS_IP:LOCAL_DNS_PORT.
 LOCAL_DNS_ENABLED = false
-LOCAL_DNS_IP = "127.0.0.1"
-LOCAL_DNS_PORT = 53
-
-# Local DNS cache sizing.
-# Must be >= 1.
-LOCAL_DNS_CACHE_MAX_RECORDS = 10000
-
-# TTL used by the local DNS cac
+LOCAL_DNS_
